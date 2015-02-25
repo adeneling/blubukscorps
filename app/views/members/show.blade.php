@@ -1,0 +1,1 @@
+C:\xampp\htdocs\blublukscorps\app/views/members/show.blade.php

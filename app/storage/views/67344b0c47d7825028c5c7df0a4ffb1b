@@ -1,0 +1,57 @@
+<?php $__env->startSection('asset'); ?>
+	<?php echo $__env->make('layouts/partials/datatable', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection( 'title' ); ?>
+	<?php echo $title; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	
+	<li> <a href="#" >Member</a> </li>
+	<li> <a href="#" >Point</a> </li>
+	
+	<li class="uk-active"><a href="<?php echo URL::to('/admin/members'); ?>" class="uk-navbar-nav-subtitle"><center>Admin</center>
+		<div>Manage</div>
+        </a>
+    </li>
+    <li><a href="<?php echo URL::to('/admin/transactions'); ?>" class="uk-navbar-nav-subtitle"><center>Transaction</center>
+		<div> History Transactions</div>
+        </a>
+    </li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title-button'); ?>
+	<?php echo HTML::buttonAdd(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection( 'breadcrumb' ); ?>
+	<li> Dashboard</li >
+	<li> <?php echo $title; ?> </li >
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection( 'content' ); ?>
+	<i class="uk-icon-spin uk-icon-spinner"></i> Show Members
+	<br>
+	<?php echo Datatable:: table()
+		->addColumn( 'id' , 'Nama' , '' )
+		->setOptions( 'aoColumnDefs' , array(
+			array(
+				'bVisible' => false,
+				'aTargets' => [ 0]),
+			array(
+				'sTitle' => 'Nama' ,
+				'aTargets' => [ 1 ]),
+			array(
+				'bSortable' => false,
+				'aTargets' => [ 2])
+			))
+		-> setOptions( 'bProcessing' , true)
+		-> setUrl (route( 'admin.members.index' ))
+		-> render('datatable.uikit'); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

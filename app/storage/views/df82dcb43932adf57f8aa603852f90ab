@@ -1,0 +1,39 @@
+<div class="uk-form-row" >
+	<?php echo Form::labelUk('member_id', 'Member'); ?>
+
+	<?php echo Form::select('member_id', array(''=>'')+Member::lists('name','id'), null, array(
+	'id'=>'member_id',
+	'placeholder' => "Select Member ID")); ?>
+
+</div>
+
+<div class="uk-form-row" >
+	<?php echo Form::labelUk('product_types', 'Jumlah Tipe Produk Beli'); ?>
+
+	<?php echo Form::textUk('product_types', 'Jumlah Tipe Produk', 'uk-icon-th'); ?>
+
+</div>
+<div class="uk-form-row" >
+	<?php echo Form::labelUk('total_price', 'Total Price'); ?>
+
+	<?php echo Form::textUk('total_price', 'Total Harga', 'uk-icon-money'); ?>
+
+</div>
+
+<div class="uk-form-row" >
+	<?php echo Form::labelUk('point', 'Point'); ?>
+
+	<?php echo Form::textUk('point', 'Jumlah Poin', 'uk-icon-plus-square'); ?>
+
+</div>
+
+	<?php echo HTML::divider(); ?>
+
+<div class="uk-form-row" >
+	<?php echo Form::submitUk('Simpan'); ?>
+
+</div>
+
+<script>
+	$(document).ready(function(){$("#member_id").select2();});
+</script>

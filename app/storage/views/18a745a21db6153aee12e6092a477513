@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title> <?php echo $__env->yieldContent('title'); ?> | PT. Blubuks</title>
+		<link rel="stylesheet" href="<?php echo asset('packages/uikit/css/uikit.almost-flat.min.css'); ?>" />
+		<link rel="stylesheet" href="<?php echo asset('css/app.css'); ?>" />
+		<script src="<?php echo asset('components/jquery/jquery.min.js'); ?>" > </script>
+		<script src="<?php echo asset('packages/uikit/js/uikit.min.js'); ?>" > </script>
+		<?php echo $__env->yieldContent( 'asset' ); ?>
+	</head>
+	<body>
+
+		<div class="uk-container uk-container-center uk-margin-top" >
+				<nav class="uk-navbar" >
+				<a href="<?php echo URL::to('/dashboard'); ?>" class="uk-navbar-brand uk-hidden-small" >BLUBUKS</a>
+				<ul class="uk-navbar-nav uk-hidden-small" >
+					<?php echo $__env->yieldContent('nav'); ?>
+				</ul>
+
+				<div class="uk-navbar-flip uk-navbar-content">
+				    <div class="uk-button-group">
+				    <!--
+				    	Menampilkan User yang sedang login
+				    -->
+				    	<div class="uk-button-group">
+					    <!-- This is a button -->
+						    <button class="uk-button uk-button-primary"><i class="uk-icon-user"> <?php echo Sentry::getUser()->first_name. ' ' . Sentry::getUser()->last_name; ?></i></button>
+
+						    <!-- This is the container enabling the JavaScript -->
+						    <div data-uk-dropdown="{mode:'click'}">
+
+						        <!-- This is the button toggling the dropdown -->
+						        <a class="uk-button">
+						        	<i class="uk-icon-cog"></i>
+						        </a>
+
+						        <!-- This is the dropdown -->
+						        <div class="uk-dropdown uk-dropdown-small">
+						            <ul class="uk-nav uk-nav-dropdown">
+						                <li>
+						                	<a class="uk-button uk-button-danger uk-button-mini" href="<?php echo URL::to('logout'); ?>">
+							                	<i class="uk-icon-sign-out"> Logout</i>
+							                </a>
+						                </li>
+						                
+						            </ul>
+						        </div>
+
+						    </div>
+						</div>
+						<!-- 
+	    				<a class="uk-button uk-button-primary" href=""><?php echo Sentry::getUser()->first_name. ' ' . Sentry::getUser()->last_name; ?></a>
+
+	    				<a class="uk-button uk-button-danger" href="<?php echo URL::to('logout'); ?>">Logout</a>    				
+	    				-->
+					</div>
+				</div>
+
+				<div class="uk-navbar-brand uk-navbar-center uk-visible-small">BLUBUKS</div>
+			</nav>
+
+			<div class="uk-container-center uk-margin-top" >
+				<?php echo $__env->make('layouts.partials.alert', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+				<!-- Tambahan Panel Box buat Breadcrumb-->
+				<div class="uk-panel uk-panel-box uk-panel-box-secondary">
+					<ul class="uk-breadcrumb" >
+						<?php echo $__env->yieldContent('breadcrumb'); ?>
+					</ul>	
+				</div>
+				
+				<h1 class="uk-heading-large" >					
+					<?php echo $__env->yieldContent('title'); ?> 
+					<?php echo $__env->yieldContent('title-button'); ?>
+				</h1>
+					<?php echo $__env->make('layouts.partials.validation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<?php echo $__env->yieldContent('content'); ?>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<?php $__env->startSection('content'); ?>
+	<div class="uk-text-center" >
+		<div class="uk-vertical-align-middle" style="width: 500px;" >
+		<?php echo $__env->make('layouts.partials.validation', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php echo Form::open(array('url' => route('guest.register'), 'class' => 'uk-form uk-form-horizontal')); ?>
+
+			<div class="uk-panel uk-panel-box">
+				<?php echo $__env->make('guest._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			</div>
+
+		<?php echo Form::close(); ?>
+
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.guest', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
